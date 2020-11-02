@@ -16,6 +16,20 @@ const Place = (props) => {
       type: ADD_MARKER,
       payload: {
         id: props.categories.id,
+        name: props.categories.name,
+        lat: props.categories.location.lat,
+        lng: props.categories.location.lng,
+      },
+    });
+  };
+
+  const handleFav = () => {
+    dispatch({
+      type: PLUS_FAVORITE,
+      payload: {
+        id: props.categories.id,
+        name: props.categories.name,
+        picUrl: picture,
       },
     });
   };
@@ -44,7 +58,9 @@ const Place = (props) => {
           <Button onClick={handleMarker} variant="dark">
             Mark
           </Button>
-          <Button variant="dark">Fav</Button>
+          <Button onClick={handleFav} variant="dark">
+            Fav
+          </Button>
         </Card.Body>
       </Card>
     </div>
